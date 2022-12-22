@@ -1,0 +1,13 @@
+{% extends 'base.twig' %}
+{% block body %}
+    <div>
+        <div class="content-inner content-inner--form h-pt-0 message-screen-wrapper">
+            <div class="message-content">
+                <img src="/images/close.svg" alt="delete">
+                <p><b>{% block title %}Ошибка{% endblock %}</b></p>
+
+                <p>Что-то пошло не так. Повторите попытку позже.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

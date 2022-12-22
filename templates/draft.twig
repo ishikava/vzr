@@ -1,0 +1,52 @@
+{% extends 'base.twig' %}
+{% block body %}
+    <div>
+<span class="link-wrapper">
+        <a href="/policies/" class="link link-back link-ib">< К списку полисов</a>
+            </span>
+        <h2>{% block title %}Черновик полиса ВЗР{% endblock %}</h2>
+
+        <div class="content-inner content-inner--form h-pt-0">
+            <form class="" id="form-to-fill" action='/api/acceptdraft/' novalidate="novalidate">
+                <div class="form__group">
+                    <p class="h-text-right h-mb-0">
+                        <a class="link-basket" href="javascript:void(0)"
+                           onclick="deletePolicy('{{ data.PolicyId }}');return false;">
+                            <img src="/images/basket.svg" class="link-wrapper" style="width: auto" alt="delete"></a>
+                    </p>
+
+                    <p class="p-mob">{{ mess.Mess03|raw }}</p>
+
+                    <p class="h-mt-40 h-pt-20 link-wrapper">
+                        <a href="/api/downloaddraft/{{ data.PolicyId }}"
+                           class="link link-checkbox link-dd link-dwnl">Открыть черновик полиса ВЗР</a>
+                    </p>
+                    <p class="h-mt-40 h-pt-20 link-wrapper">
+                        <a href="/policies/mail/{{ data.PolicyId }}"
+                           class="link link-checkbox link-dd link-dwnl link-mail">Отправить черновик полиса на почту</a>
+                    </p>
+                </div>
+                <div class="form__footer-buttons h-fixed-bottom h-mb-0">
+                    <div class="input h-mb-20 h-text-left">
+                        <span class="checkbox">
+                            <input id="draft" class="checkbox__control visually-hidden activate-policy-check"
+                                   type="checkbox" name="policyId" value="{{ data.PolicyId }}">
+                                <label class="checkbox__label checkbox_no_registration" for="draft">
+                                    <svg class="checkbox__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <rect x=".5" y=".5" width="23" height="23" rx="3.5"></rect>
+                                        <path class="checkbox__svg-check" d="M19.126 7.937l-8.127 8.127-5.126-5.127"
+                                              stroke-width="2" stroke-miterlimit="10"></path>
+                                    </svg>
+                                    <span class="checkbox__text">Черновик полиса мною просмотрен, данные корректны</span>
+                                </label>
+                        </span>
+                    </div>
+                    <input type="submit" class="btn" id="activate-policy" value="Активировать полис" disabled>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+{% endblock %}

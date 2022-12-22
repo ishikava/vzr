@@ -1,0 +1,58 @@
+{% extends 'base.twig' %}
+{% block body %}
+    {% if data.contracts|length > 0 %}
+        <div>
+
+            <h2>{% block title %}Бонусный полис ВЗР{% endblock %}</h2>
+
+            <div class="content-inner content-inner--form h-pt-0">
+                <form class="novalidate" id="form-to-fill" action="/api/getform/" novalidate="novalidate">
+                    <div class="form__group">
+                        <p class="p-mob">{{ data.message.MessAppList.Mess01|raw }}</p>
+                        {% for item in data.contracts %}
+                            <div class="input h-bb h-mt-10">
+                        <span class="checkbox">
+                            <input id="{{ item.PolicyId }}" class="checkbox__control visually-hidden user-success"
+                                   type="radio"
+                                   {% if item.vzrInfo.TiPolicies.Status and item.vzrInfo.TiPolicies.Status !="Cancelled" %}
+                                       disabled
+                                   {% endif %}
+                                   name="PolicyId" value="{{ item.PolicyId }}">
+                                <label class="checkbox__label checkbox_no_registration" for="{{ item.PolicyId }}">
+                                    <svg class="checkbox__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <rect x=".5" y=".5" width="23" height="23" rx="3.5"></rect>
+                                        <path class="checkbox__svg-check" d="M19.126 7.937l-8.127 8.127-5.126-5.127"
+                                              stroke-width="2" stroke-miterlimit="10"></path>
+                                    </svg>
+                                    <span class="checkbox__text">{{ item.Name }}</span>
+                                </label>
+                        </span>
+                                <div class="link-wrapper">
+                                {% if item.vzrInfo.TiPolicies.Status == "Active" %}
+                                    <a href="/api/download/{{ item.PolicyId }}.pdf?{{ string }}"
+                                       class="link link-checkbox link-dwnl">Открыть полис ВЗР</a>
+                                {% elseif item.vzrInfo.TiPolicies.Status == "Draft" %}
+                                    <a href="/policies/draft/{{ item.PolicyId }}"
+                                       class="link link-checkbox">Просмотреть
+                                        черновик полиса ВЗР</a>
+                                {% endif %}
+                                </div>
+                                <div class="link-wrapper">
+                                    {% if item.vzrInfo.TiPolicies.Status == "Active" %}
+                                        <a href="/policies/mail/{{ item.PolicyId }}"
+                                           class="link link-checkbox link-dd link-dwnl link-mail">Отправить полис ВЗР на почту</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form__footer-buttons h-fixed-bottom h-mb-0">
+                        <input type="submit" id="submit-button" class="btn" value="Заполнить форму" disabled>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

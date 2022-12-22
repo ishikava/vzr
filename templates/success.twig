@@ -1,0 +1,23 @@
+{% extends 'base.twig' %}
+{% block body %}
+    <div>
+        <span class="link-wrapper">
+        <a href="/policies/" class="link link-back link-ib">< К списку полисов</a>
+            </span>
+        <div class="content-inner content-inner--form h-pt-0 message-screen-wrapper">
+            <div class="message-content">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" style="width: 28px;height: 24px;">
+                    <symbol id="paragraph" viewBox="0 0 28 17">
+                        <path stroke="#CE253D" stroke-miterlimit="10" stroke-width="2" d="M19.3 8L11 16.1 6 11"></path>
+                    </symbol>
+                    <use xlink:href="#paragraph" width="110%" height="110%"></use>
+                </svg>
+                <p><b>{% block title %}Успешно{% endblock %}</b></p>
+                <p>Полис ВЗР отправлен на указанную вами электронную почту</p>
+            </div>
+        </div>
+        <div class="form__footer-buttons h-fixed-bottom h-mb-0">
+            <a class="btn" href="/policies/">К списку полисов</a>
+        </div>
+    </div>
+{% endblock %}

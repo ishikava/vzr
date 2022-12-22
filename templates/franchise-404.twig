@@ -1,0 +1,16 @@
+{% extends 'base.twig' %}
+{% block body %}
+    <h2 class="fr-h2">
+        {{ title }}
+    </h2>
+
+    <div class="content-inner content-inner--form h-text-center">
+
+        <img class="notfound" src="/images/notfound.png">
+
+        <p>{{ message|raw }}</p>
+
+        <p><span class="fr-footer-link link">При возникновении вопросов обратитесь в<br>Чат мобильного приложения</span></p>
+
+    </div>
+{% endblock %}

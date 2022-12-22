@@ -1,0 +1,141 @@
+{% extends 'base.twig' %}
+{% block body %}
+
+    <style>
+        .accordion__title::after {
+            content: "";
+            position: absolute;
+            top: 18px;
+            right: 10px;
+            width: 16px;
+            height: 10px;
+            background: url(/images/arrow-accordion.svg);
+            transform: none;
+            transition: transform 0.3s ease-out;
+        }
+
+        .accordion__title::before {
+            content: none;
+        }
+
+        .accordion__title {
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            right: -10px;
+            width: 50px;
+            height: 50px;
+            z-index: 111;
+        }
+
+        .accordion__content {
+            margin-left: 10px;
+        }
+
+        .accordion__item {
+            position: relative;
+        }
+
+        .btn:focus, .btn:hover, .btn:active {
+            background:  #e3001f;
+        }
+
+        .btn--outline-gray:focus, .btn--outline-gray:hover {
+            color: #999;
+            border: 1px solid #999;
+            background: #ccc;
+        }
+    </style>
+
+    <div>
+
+        <h2 class="fr-h2">
+            {% block title %}Справка по оплаченной франшизе{% endblock %}
+        </h2>
+
+        <div class="content-inner fr-content-inner content-inner--form h-pt-0">
+
+
+            <div class="fr-text">{{ message }}</div>
+
+            <div class="accordion js-accordion">
+                {% for li in list %}
+                    <div class="accordion__item js-accordion-item">
+                        <div class="fr-fio">{{ li.FIO }}</div>
+                        <div class="fr-item-container">
+                            <div class="fr-summ">ИТОГО: {{ li.Sum }} рублей</div>
+                            <div class="fr-download">
+                                <div class="fr-download-item link-wrapper">
+                                    <img class="fr-icon" src="/images/search.svg"><a class="link fr-link"
+                                                                       href="/franchise/pdf?police-id={{ policy }}&subj-id={{ li.SubjId }}&phone={{ phone }}&sum={{ li.Sum }}&key={{ key }}">Открыть
+                                        справку</a>
+                                </div>
+                                <div class="fr-download-item link-wrapper js-popup" data-popup-widget-target="js-popup{{ loop.index }}">
+                                    <img class="fr-icon" src="/images/edit.svg"><a class="link fr-link" href="#">Отправить на почту</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion__title js-accordion-button" tabindex="{{ loop.index }}"></div>
+
+                        <div class="accordion__content js-accordion-content">
+                            <div class="fr-item">
+                                <div class="fr-item-row"><span>Номер полиса: </span> {{ li.PolicyNumber }}</div>
+                                <div class="fr-item-row"><span>Номер договора: </span> {{ li.AgreementNumber }}</div>
+                                <div class="fr-item-row"><span>Дата начала действия договора: </span> {{ li.AgreementDateFrom }}</div>
+                                <div class="fr-item-row"><span>Дата окончания действия договора: </span> {{ li.AgreementDateTo }}</div>
+                                <div class="fr-item-row"><span>Сумма, руб.: </span>{{ li.Sum }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-hide">
+                        <div class="popup mfp-zoom-in white-popup-block" data-popup-widget-id="js-popup{{ loop.index }}">
+
+                            <p class="popup__text">Укажите e-mail</p>
+
+                            <form action="/franchise/mail" method="post" autocomplete="off">
+                                <div class="form__group">
+                                    <div class="form__row">
+                    <span class="form__input">
+                        <span class="input js-input js-parent-input-error">
+                        <input id="email" class="input__control" type="text" name="email" data-rule-required="true" data-rule-realemail="true" value="{{ email }}">
+                            <input type="hidden" name="police-id" value="{{ policy }}">
+                            <input type="hidden" name="police-number" value="{{ number }}">
+                            <input type="hidden" name="subj-id" value="{{ li.SubjId }}">
+                            <input type="hidden" name="phone" value="{{ phone }}">
+                            <input type="hidden" name="original-email" value="{{ email }}">
+                            <input type="hidden" name="sum" value="{{ li.Sum }}">
+                            <input type="hidden" name="key" value="{{ key }}">
+                        <span class="input__message"></span>
+                        </span>
+                    </span>
+                                    </div>
+                                </div>
+
+                                <div class="popup__button-wrapper">
+                                    <button class="btn btn--middle" type="submit">Отправить справку</button>
+                                    <button class="btn btn--outline-gray btn--middle js-popup-close">Закрыть</button>
+                                </div>
+
+                            </form>
+
+                            <a class="popup__close js-popup-close" href="#">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path d="M2 1L1 2l21 21 1-1L2 1z"></path>
+                                    <path d="M1 22l1 1L23 2l-1-1L1 22z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="form__footer-buttons h-fixed-bottom h-mb-0">
+                <span class="fr-footer-link link">При возникновении вопросов обратитесь в<br>Чат мобильного приложения</span>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base.twig' %}
+{% block body %}
+    <div>
+        <span class="link-wrapper">
+        <a href="/policies/" class="link link-back link-ib">< К списку полисов</a>
+            </span>
+        <h2>{% block title %}Заполнение формы{% endblock %}</h2>
+
+        <div class="content-inner content-inner--form h-pt-0">
+            <form class="novalidate" id="form-to-fill" action="/api/createvzrpolicy/" novalidate="novalidate">
+                <div class="form__group">
+
+                    <p class="p-mob">{{ data.Message.MessAppList.Mess02 }}</p>
+                    <div class="form__row">
+                        <label class="form__label" for="lastname">Фамилия (латиницей)*</label>
+                        <span class="form__input">
+                    <span class="input js-input js-parent-input-error">
+                        <input id="firstname" class="input__control js-input js-language-convert" name="lastname"
+                               maxlength="35" data-rule-required="true" pattern="[A-Za-z\-\s]" type="text">
+                        <span class="input__message"></span>
+                    </span>
+                </span>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label" for="firstname">Имя (латиницей)*</label>
+                        <span class="form__input">
+                    <span class="input js-input js-parent-input-error">
+                        <input id="name2" class="input__control js-input js-language-convert" name="firstname"
+                               maxlength="35" data-rule-required="true" pattern="[A-Za-z\-\s]" type="text">
+                        <span class="input__message"></span>
+                    </span>
+                </span>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="form__label" for="birthday">Дата рождения</label>
+                        <span class="input input--calendar">
+                        <input id="birthday" class="input__control" type="text" name="birthday"
+                               value="{{ data.FullVzrInfo.Birthday|convertDateFromWS }}" placeholder="__.__.____"
+                               readonly>
+
+                        <span class="input__ico-calendar">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M18 4h-2V3h-1v1H8V3H7v1H5a2 2 0 0 0-2 2v13c0 1 1 2 2 2h13c1 0 2-1 2-2V6c0-1.1-1-2-2-2zm1 5V11.9h-3V9h3zM8 13h3v3H8v-3zm-1 3H4v-3h3v3zm4-7v3H8V9h3zm1 0h3v3h-3V9zm-1 8v3H8v-3h3zm1 0h3v3h-3v-3zm0-1v-3h3v3h-3zm4-3h3v3h-3v-3zm-.3-7.5c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zm-8.1 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zM7 9v3H4V9h3zM4 19v-2h3v3H5a1 1 0 0 1-1-1zM18 20h-2v-3h3v2c0 .5-.5 1-1 1z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="form__label" for="tel">Мобильный телефон</label>
+                        <span class="form__input">
+                    <span class="input js-parent-input-error">
+                        <input id="tel" class="input__control user-success" data-mask="+7 (000) 000-00-00" type="text"
+                               name="tel" placeholder="+7 (___) ___-__-__" value="{{ data.FullVzrInfo.PhoneNumber }}"
+                               data-rule-required="true"
+                               data-rule-realphone="true" value="" autocomplete="off" maxlength="18">
+                        <span class="input__message"></span>
+                    </span>
+                </span>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="form__label" for="email">E-mail</label>
+                        <span class="form__input">
+                    <span class="input js-parent-input-error">
+                        <input id="email" class="input__control user-success" type="text" name="email"
+                               data-rule-required="true" data-rule-realemail="true"
+                               value="{{ data.FullVzrInfo.Email }}">
+                        <span class="input__message"></span>
+                    </span>
+                </span>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="form__label" for="currency">Валюта полиса*</label>
+                        <span class="input js-parent-input-error js-input-selected">
+                        <select name="program" class="js-select2 select-currency" data-placeholder="Выберите тип"
+                                data-rule-required="true">
+                            <option value=""></option>
+                            {% for key, currency in data.Programs %}
+                                <option value="{{ key }}">{{ currency }}</option>
+                            {% endfor %}
+                        </select>
+
+            <div class="input__message"></div>
+        </span>
+                    </div>
+
+
+                    <div class="form__row">
+                        <label class="form__label" for="territory">Территория действия полиса</label>
+                        <span class="form__input">
+                    <span class="input js-parent-input-error">
+                        <input id="territory" class="input__control user-success" type="text" name="territory"
+                               value="{{ data.FullVzrInfo.vzrInfo.Territory }}" autocomplete="off" disabled>
+                        <span class="input__message"></span>
+                    </span>
+                </span>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="form__label" for="expired">Срок действия бонусного полиса ВЗР</label>
+                        <span class="input input--calendar">
+                        <input id="expired" class="input__control input__control--calendar js-datepicker" type="text"
+                               value="{{ data.FullVzrInfo.vzrInfo.ExpirationDate|convertDateFromWS }}"
+                               placeholder="__.__.____"
+                               disabled>
+
+                        <span class="input__ico-calendar">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path d="M18 4h-2V3h-1v1H8V3H7v1H5a2 2 0 0 0-2 2v13c0 1 1 2 2 2h13c1 0 2-1 2-2V6c0-1.1-1-2-2-2zm1 5V11.9h-3V9h3zM8 13h3v3H8v-3zm-1 3H4v-3h3v3zm4-7v3H8V9h3zm1 0h3v3h-3V9zm-1 8v3H8v-3h3zm1 0h3v3h-3v-3zm0-1v-3h3v3h-3zm4-3h3v3h-3v-3zm-.3-7.5c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zm-8.1 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zM7 9v3H4V9h3zM4 19v-2h3v3H5a1 1 0 0 1-1-1zM18 20h-2v-3h3v2c0 .5-.5 1-1 1z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                    </div>
+
+
+                </div>
+
+                <div class="form__footer-buttons h-fixed-bottom h-mb-0">
+                    <input type="submit" class="btn" id="create-draft" value="Создать черновик" disabled>
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+.checkbox {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.checkbox--out-form {
+    display: block;
+    max-width: 520px;
+    margin: 0 20px 30px
+}
+
+@media (min-width: 520px) {
+    .checkbox--out-form {
+        margin: 0 auto 30px
+    }
+}
+
+.checkbox--focus .checkbox__icon, .checkbox__control:hover:not([readonly]) + label .checkbox__icon {
+    stroke: #adadad
+}
+
+.checkbox__control:checked + label .checkbox__svg-check {
+    opacity: 1
+}
+
+.checkbox__control:checked:disabled + label .checkbox__svg-check, .checkbox__control:checked[readonly] + label .checkbox__svg-check {
+    opacity: 1;
+    stroke: #9e9e9e
+}
+
+.checkbox__control:disabled + label .checkbox__icon, .checkbox__control[readonly] + label .checkbox__icon {
+    fill: #f3f3f3
+}
+
+.checkbox__control.is-error + label .checkbox__icon {
+    stroke: #ce253d
+}
+
+.checkbox__control[readonly], .checkbox__control[readonly] + label {
+    cursor: not-allowed
+}
+
+.checkbox__label {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    cursor: pointer
+}
+
+.checkbox__icon {
+    float: left;
+    width: 24px;
+    height: 24px;
+    stroke: #dbdbdb;
+    fill: #fff;
+    -webkit-transition: stroke .5s cubic-bezier(.785, .135, .15, .86), fill .5s cubic-bezier(.785, .135, .15, .86);
+    -o-transition: stroke .5s cubic-bezier(.785, .135, .15, .86), fill .5s cubic-bezier(.785, .135, .15, .86);
+    transition: stroke .5s cubic-bezier(.785, .135, .15, .86), fill .5s cubic-bezier(.785, .135, .15, .86);
+    margin: 0 10px 0 0
+}
+
+.checkbox__svg-check {
+    opacity: 0;
+    stroke: #ce253d;
+    -webkit-transition: opacity .25s cubic-bezier(.785, .135, .15, .86);
+    -o-transition: opacity .25s cubic-bezier(.785, .135, .15, .86);
+    transition: opacity .25s cubic-bezier(.785, .135, .15, .86)
+}
+
+.checkbox__text {
+    display: block;
+    font-size: 14px;
+    line-height: 1.7143;
+    margin: 0 0 0 36px
+}
+
+.checkbox__text--large-indent {
+    margin-left: 68px
+}
+
+.checkbox__text--inside-icon {
+    position: relative;
+    padding-left: 30px
+}
+
+.checkbox__text--inside-icon svg {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.checkbox__link-red {
+    color: #ce253d
+}
+
+.checkbox__link-red:hover {
+    color: #b22034
+}
+
+.checkbox__text-gray {
+    color: #b2b2b2
+}

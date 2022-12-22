@@ -1,0 +1,330 @@
+.link {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
+    color: #ce253d;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid transparent;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: color .1s cubic-bezier(.785, .135, .15, .86), border .1s cubic-bezier(.785, .135, .15, .86), background .1s cubic-bezier(.785, .135, .15, .86), opacity .1s cubic-bezier(.785, .135, .15, .86);
+    -o-transition: color .1s cubic-bezier(.785, .135, .15, .86), border .1s cubic-bezier(.785, .135, .15, .86), background .1s cubic-bezier(.785, .135, .15, .86), opacity .1s cubic-bezier(.785, .135, .15, .86);
+    transition: color .1s cubic-bezier(.785, .135, .15, .86), border .1s cubic-bezier(.785, .135, .15, .86), background .1s cubic-bezier(.785, .135, .15, .86), opacity .1s cubic-bezier(.785, .135, .15, .86)
+}
+
+.link:hover, .link:active {
+    color: #b22034;
+    cursor: pointer
+}
+
+.link:hover.link--gray {
+    border-color: rgba(158, 159, 158, .3)
+}
+
+.link:hover svg {
+    stroke: #b22034
+}
+
+.link:active {
+    color: #a5192c;
+    border-color: transparent
+}
+
+.link:active svg {
+    stroke: #a5192c
+}
+
+@media (min-width: 1024px) {
+    .link--people {
+        display: block;
+        width: 170px
+    }
+}
+
+.link--dotted {
+    border-bottom: 1px dotted currentColor
+}
+
+.link--dotted:hover {
+    border-color: transparent
+}
+
+.link--dotted:active {
+    border-color: transparent
+}
+
+.link--solid {
+    border-bottom: 1px solid currentColor
+}
+
+.link--solid.link--gray {
+    border-color: rgba(158, 159, 158, .3)
+}
+
+.link--solid.link--gray:active, .link--solid.link--gray:hover {
+    border-color: transparent
+}
+
+.link--solid:hover {
+    border-color: transparent
+}
+
+.link--solid:active {
+    border-color: transparent
+}
+
+.link--gray {
+    color: #696969
+}
+
+.link--gray svg {
+    stroke: #696969
+}
+
+.link--gray:hover {
+    color: #696969
+}
+
+.link--gray:active {
+    color: #575757
+}
+
+.link--gray:active svg {
+    stroke: #575757
+}
+
+.link--gray.link--dotted {
+    border-color: #696969
+}
+
+.link--gray.link--dotted:active, .link--gray.link--dotted:hover {
+    border-color: transparent
+}
+
+.link--black {
+    color: #000
+}
+
+.link--black svg {
+    stroke: #000
+}
+
+.link--black:hover {
+    color: #999
+}
+
+.link--black:active {
+    color: #575757
+}
+
+.link--black:active svg {
+    stroke: #575757
+}
+
+.link--black.link--dotted {
+    border-color: #999
+}
+
+.link--black.link--dotted:active, .link--black.link--dotted:hover {
+    border-color: transparent
+}
+
+.link--gray-light {
+    color: #b2b2b2
+}
+
+.link--gray-light:hover {
+    color: #b2b2b2
+}
+
+.link--gray-light:active {
+    color: #b2b2b2
+}
+
+.link--skip {
+    font-size: 14px;
+    line-height: 1.35714;
+    border-bottom: 1px solid currentColor
+}
+
+.link--skip:hover {
+    color: #b22034;
+    border-color: transparent
+}
+
+.link--ico-attach {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    margin-left: 27px
+}
+
+.link--ico-attach::before {
+    position: absolute;
+    left: -27px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/svg/misc/attach.svg) no-repeat center center
+}
+
+.link--edit {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    margin-left: 27px
+}
+
+.link--edit::before {
+    position: absolute;
+    left: -27px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/svg/misc/edit.svg) no-repeat center center
+}
+
+.link--copy {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    margin-left: 27px
+}
+
+.link--copy::before {
+    position: absolute;
+    left: -27px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/svg/misc/copy.svg) no-repeat center center
+}
+
+.link--close {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    margin-left: 27px
+}
+
+.link--close::before {
+    position: absolute;
+    left: -27px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/svg/misc/close.svg) no-repeat center center
+}
+
+.link--ico-download {
+    position: relative;
+    margin-left: 24px
+}
+
+.link--ico-download::before {
+    position: absolute;
+    left: -24px;
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/svg/misc/download.svg) no-repeat center center
+}
+
+.link--toggle {
+    position: relative;
+    line-height: normal;
+    margin-right: 16px
+}
+
+body.is-ie .link--toggle {
+    overflow: visible
+}
+
+.link--toggle::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: -16px;
+    width: 14px;
+    height: 14px;
+    background: url(/assets/img/svg/param-arrow-red.svg) no-repeat center center;
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.785, .135, .15, .86);
+    transition: -webkit-transform .3s cubic-bezier(.785, .135, .15, .86);
+    -o-transition: transform .3s cubic-bezier(.785, .135, .15, .86);
+    transition: transform .3s cubic-bezier(.785, .135, .15, .86);
+    transition: transform .3s cubic-bezier(.785, .135, .15, .86), -webkit-transform .3s cubic-bezier(.785, .135, .15, .86)
+}
+
+.link--toggle.is-toggle::after {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.link--add {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px
+}
+
+.link--add:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    background: url(/assets/img/svg/misc/add-ico.svg) no-repeat center center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.link--plus {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px
+}
+
+.link--plus:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    background: url(/assets/img/svg/misc/plus2.svg) no-repeat center center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.arrow-svg {
+    width: 9px;
+    height: 10px;
+    stroke: #e27c8b;
+    fill: none;
+    -webkit-transition: stroke .5s cubic-bezier(.785, .135, .15, .86);
+    -o-transition: stroke .5s cubic-bezier(.785, .135, .15, .86);
+    transition: stroke .5s cubic-bezier(.785, .135, .15, .86)
+}
